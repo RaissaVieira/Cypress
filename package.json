@@ -1,0 +1,23 @@
+{
+    "name": "Cypress",
+    "version": "1.0.0",
+    "description": "## Repositório oficial",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/RaissaVieira/Cypress.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/RaissaVieira/Cypress/issues"
+    },
+    "homepage": "https://github.com/RaissaVieira/Cypress#readme",
+    "devDependencies": {
+        "cypress": "5.6.0"
+    }
+}
