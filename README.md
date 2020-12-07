@@ -16,6 +16,7 @@
 
 ## Configurando o ambiente
 **1.** Instalar Node.js
+
 **2.** Instalar Cypress: 
     
     npm install -D cypress
