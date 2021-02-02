@@ -2,6 +2,9 @@
 
 context('Compra', () => {
     it('Efetuar compra de produto', () => {
+
+        cy.backgroundLogin();
+
         // http://automationpractice.com/index.php
         cy.visit('/'); // acessa o endereco da baseUrl
 
@@ -29,10 +32,10 @@ context('Compra', () => {
         
         cy.get(".cart_navigation a[href$='controller=order&step=1']").click();
 
-        cy.get('#email').type('teste123@gmail.com');
+        /* cy.get('#email').type('teste123@gmail.com');
         cy.get('#passwd').type('123456');
 
-        cy.get('button#SubmitLogin').click();
+        cy.get('button#SubmitLogin').click();*/
 
         // Validadndo se o endereco de entrega eh igual o de cobranca
         // [type=checkbox]#addressesAreEquals
