@@ -24,3 +24,11 @@
 **3.** Iniciar o Cypress: 
 
     npx cypress open
+
+## Geração de relatórios
+
+* **Cypress-multi-reporters** - permite que seja configurado mais de um relatório para ser usado no projeto.
+* **Mocha** - lib para execução dos testes
+* **Mochawesome** - lib responsável por gerar os arquivos .json usados no report html
+* **Mochawesome-merge** - merge dos arquivos .json gerados pelo mochawesome
+* **Mochawesome-report-generator** - gera o relatório em html usando os arquivos gerados (json)
