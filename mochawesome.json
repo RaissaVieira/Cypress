@@ -1,0 +1,111 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2021-02-09T19:08:11.375Z",
+    "end": "2021-02-09T19:08:24.791Z",
+    "duration": 13416,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4994e3d6-0859-4a0b-9246-492c26b25f73",
+      "title": "",
+      "fullFile": "cypress/integration/compra.spec.js",
+      "file": "cypress/integration/compra.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6f59fd62-0752-43c9-b27a-ac32347fe8da",
+          "title": "Compra",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Efetuar compra de produto",
+              "fullTitle": "Compra Efetuar compra de produto",
+              "timedOut": null,
+              "duration": 13334,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.backgroundLogin(); // http://automationpractice.com/index.php\ncy.visit('/'); // acessa o endereco da baseUrl\nvar nomeProduto = 'Faded Short Sleeve T-shirts';\ncy.contains(nomeProduto).trigger('mouseover');\ncy.contains(nomeProduto) // Navegou ate o elemento pelo conteudo\n.parent() // Pegou o elemento pai \"h5\"\n.siblings('div.button-container') // Acessou o elemento irmao com a seguinte div\n.children('a') // Selecionou os filhos \"a\" da div correspondente\n.first() // o elemento que desejamos era o primeiro \n.click(); // Validando se o produto foi add ao carrinho com sucesso\ncy.get('.icon-ok').parent().should('contain.text', 'Product successfully added to your shopping cart');\ncy.get('span#layer_cart_product_title').should('contain.text', nomeProduto);\ncy.get(\".button-container a[href$='controller=order']\").click();\ncy.get(\".cart_navigation a[href$='controller=order&step=1']\").click();\n/* cy.get('#email').type('teste123@gmail.com');\ncy.get('#passwd').type('123456');\n cy.get('button#SubmitLogin').click();*/\n// Validadndo se o endereco de entrega eh igual o de cobranca\n// [type=checkbox]#addressesAreEquals\n// tipo de assercao, atributo, valor\ncy.get('[type=checkbox]#addressesAreEquals').should('have.attr', 'checked', 'checked');\ncy.get('[type=checkbox]#addressesAreEquals').should('have.attr', 'name', 'same');\ncy.get('button[name=processAddress]').click();\ncy.get('[type=checkbox]#cgv').check();\ncy.get('button[name=processCarrier]').click();\ncy.get('.bankwire').click();\ncy.get('.cart_navigation button[type=submit]').find('span').contains('I confirm my order').click(); //expect ou should\ncy.get('.cheque-indent strong').should('contain.text', 'Your order on My Store is complete.');\ncy.get('div.box').invoke('text').then(function (text) {\n  console.log(text); // Captura do ID do pedido\n  console.log(text.match(/[A-Z][A-Z]+/g)[1]); // Escrita de um arquivo json com o conteudo do pedido\n  // caminho do arquivo e o conteudo do arquivo\n  cy.writeFile('cypress/fixtures/pedido.json', {\n    id: \"\".concat(text.match(/[A-Z][A-Z]+/g)[1])\n  });\n});\ncy.get('a.button-exclusive').click(); // Leitura de arquivo\ncy.readFile('cypress/fixtures/pedido.json').then(function (pedido) {\n  cy.get('tr.first_item .history_link a').should('contain.text', pedido.id);\n});",
+              "err": {
+                "message": "AssertionError: Timed out retrying: expected '<span#layer_cart_product_title.product-name>' to contain text 'Faded Short Sleeve T-shirts', but the text was ''",
+                "estack": "AssertionError: Timed out retrying: expected '<span#layer_cart_product_title.product-name>' to contain text 'Faded Short Sleeve T-shirts', but the text was ''\n    at Context.eval (http://automationpractice.com/__cypress/tests?p=cypress/integration/compra.spec.js:116:45)",
+                "diff": "+ 'Faded Short Sleeve T-shirts'\n"
+              },
+              "uuid": "c9f5802c-6346-42ab-b9fa-2c69dd497601",
+              "parentUUID": "6f59fd62-0752-43c9-b27a-ac32347fe8da",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "c9f5802c-6346-42ab-b9fa-2c69dd497601"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 13334,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "mochawesome-report",
+        "quiet": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}
